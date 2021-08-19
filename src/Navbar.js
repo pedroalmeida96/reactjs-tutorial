@@ -1,13 +1,13 @@
 const Navbar = () => {
-    return (<nav className="Navbar">
-        <h1>Navbar</h1>
-        <div className="links">
-            <a href="/">Home</a>
-            <br></br>
-            <a href="/create">New blog</a>
-        </div>
+  return (
+    <nav className="navbar">
+      <h1>My First React</h1>
+      <div className="links">
+        <a href="/">Home</a>
+        <a href="/create">New blog</a>
+      </div>
     </nav>
-    );
-}
+  );
+};
 
 export default Navbar;
