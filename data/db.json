@@ -1,0 +1,23 @@
+{
+    "blogs":[
+        {
+            "id": 0,
+            "title": "React",
+            "body": "React é uma tecnologia inovadora e até é engraçada",
+            "author": "Pedro"
+          },
+          {
+            "id": 1,
+            "title": "nodeJS",
+            "body": "NodeJS tambem é fixe mas nao é JAVA.",
+            "author": "Pedro"
+          },
+          {
+            "id": 2,
+            "title": "Vinho",
+            "body": "Vinho é sempre bom, mesmo que seja de pacote",
+            "author": "Zezé"
+          }
+    ]
+    
+}

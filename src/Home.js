@@ -5,35 +5,32 @@ const Home = () => {
   const firstTry = "This is my first try with react.";
   const [name, setName] = useState("Pedro");
   const [age, setAge] = useState(25);
-  const [blogs, setBlog] = useState([
-    {
-      id: 0,
-      title: "React",
-      body: "React é uma tecnologia inovadora e até é engraçada",
-      author: "Pedro",
-    },
-    {
-      id: 1,
-      title: "nodeJS",
-      body: "NodeJS tambem é fixe mas nao é JAVA.",
-      author: "Pedro",
-    },
-    {
-      id: 2,
-      title: "Vinho",
-      body: "Vinho é sempre bom, mesmo que seja de pacote",
-      author: "Zezé",
-    },
-  ]);
+  const [blogs, setBlog] = useState(null);
 
-  useEffect(() => {
-    /**
-     * useEffect is used when there is the need to do something everytime the DOM is rendered or re-rendered.
-     * If we make useState re-render the dome  useEffect is going to do something to. 
-     * Maybe check auth or something.
-     */
-    console.log("Use effect called");
-  });
+  useEffect(
+    () => {
+      /**
+       * useEffect is used when there is the need to do something everytime the DOM is rendered or re-rendered.
+       * If we make useState re-render the dome  useEffect is going to do something to.
+       * Maybe check auth or something.
+       */
+      fetch("http://localhost:8000/blogs")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setBlog(data);
+        });
+      console.log("Use effect called");
+    },
+    [
+      /**
+       * Aqui adicionamos o name/age/blogs etc que queremos que seja re-renderizado sempre que ha uma alteraçao. Se quisermos correr a funcao useEffect apenas quando o nome é alterado
+       * mas nao quando os blogs sao alterados metemos [name]
+       */
+    ]
+  );
 
   const handleDelete = (id) => {
     /**
@@ -65,7 +62,13 @@ const Home = () => {
       <h2>HOMEPAGE</h2>
 
       <div className="blog">
-        <BlogList blogs={blogs} title="All blogs" handleDelete={handleDelete} />
+        {blogs && (
+          <BlogList
+            blogs={blogs}
+            title="All blogs"
+            handleDelete={handleDelete}
+          />
+        )}
 
         {/**
         <BlogList
