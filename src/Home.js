@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
-  const firstTry = "This is my first try with react.";
+  //const firstTry = "This is my first try with react.";
   const [name, setName] = useState("Pedro");
   const [age, setAge] = useState(25);
   const [blogs, setBlog] = useState(null);
@@ -14,7 +14,7 @@ const Home = () => {
        * If we make useState re-render the dome  useEffect is going to do something to.
        * Maybe check auth or something.
        */
-      fetch("http://localhost:8000/blogs")
+      fetch("http://localhost:8080/blogs")
         .then((response) => {
           return response.json();
         })
